@@ -12,15 +12,20 @@ function Navbar() {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      background: "#1976d2",
+      background: "#000",
       color: "#fff",
       padding: "0 2rem",
-      boxShadow: "0 1px 4px rgba(0,0,0,0.04)"
+      boxShadow: "0 1px 4px rgba(0,0,0,0.06)"
     }}>
-      <span style={{ fontWeight: 600, fontSize: "1.2rem", letterSpacing: 2 }}>
+      <span style={{
+        fontWeight: 700,
+        fontSize: "1.2rem",
+        letterSpacing: 2,
+        color: "#fff"
+      }}>
         Notes
       </span>
-      <span style={{ fontSize: "0.95rem" }}>
+      <span style={{ fontSize: "0.95rem", color: "#ccc" }}>
         Minimal Notes Manager
       </span>
     </nav>

@@ -1,32 +1,29 @@
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --primary: #000000;
+  --secondary: #ffffff;
+  --accent: #ffffff;
+  --gray-dark: #333333;
+  --gray-medium: #666666;
+  --gray-light: #cccccc;
+
+  --bg-primary: var(--secondary);
+  --bg-secondary: var(--gray-light);
+  --text-primary: var(--primary);
+  --text-secondary: var(--gray-medium);
+  --border-color: var(--gray-light);
+  --button-bg: var(--primary);
+  --button-text: var(--secondary);
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
-}
+/* Remove dark theme: Only one theme is supported (monochrome) */
 
 .App {
   text-align: center;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .App-logo {

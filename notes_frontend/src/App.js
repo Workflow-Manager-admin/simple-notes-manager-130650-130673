@@ -132,7 +132,11 @@ function App() {
 
   // Layout: Top navbar -> sidebar (notes) -> main area (editor/view)
   return (
-    <div className="App" style={{ background: "#fff", color: "#282c34", minHeight: "100vh" }}>
+    <div className="App" style={{
+      background: "#fff",
+      color: "#000",
+      minHeight: "100vh"
+    }}>
       <Navbar />
       <div style={{
         display: "flex",
@@ -152,7 +156,7 @@ function App() {
           boxSizing: "border-box"
         }}>
           {loading ? (
-            <div style={{ margin: 80, color: "#888" }}>Loading...</div>
+            <div style={{ margin: 80, color: "#666" }}>Loading...</div>
           ) : (
             <NoteEditor
               note={editing ? editingNote : selectedNote}

@@ -12,8 +12,8 @@ function Sidebar({ notes, selectedId, onSelect, onNewClick }) {
   return (
     <aside style={{
       width: 240,
-      background: "#f8f9fa",
-      borderRight: "1px solid #e9ecef",
+      background: "#fff",
+      borderRight: "1px solid #ccc",
       height: "calc(100vh - 56px)",
       display: "flex",
       flexDirection: "column"
@@ -21,13 +21,15 @@ function Sidebar({ notes, selectedId, onSelect, onNewClick }) {
       <button
         style={{
           margin: "16px",
-          background: "#1976d2",
+          background: "#000",
           color: "#fff",
           border: "none",
           borderRadius: 6,
           padding: "10px 0",
           fontWeight: 600,
-          cursor: "pointer"
+          cursor: "pointer",
+          letterSpacing: 1,
+          fontSize: "1rem"
         }}
         onClick={onNewClick}
         aria-label="Create new note"
@@ -43,13 +45,13 @@ function Sidebar({ notes, selectedId, onSelect, onNewClick }) {
             key={note.id}
             style={{
               display: "block",
-              background: note.id === selectedId ? "#e3f0fe" : "none",
-              color: "#282c34",
+              background: note.id === selectedId ? "#333" : "#fff",
+              color: note.id === selectedId ? "#fff" : "#191919",
               textAlign: "left",
               border: "none",
               width: "100%",
               padding: "12px 16px",
-              borderBottom: "1px solid #e9ecef",
+              borderBottom: "1px solid #ececec",
               cursor: "pointer",
               transition: "background 0.1s"
             }}
@@ -57,12 +59,12 @@ function Sidebar({ notes, selectedId, onSelect, onNewClick }) {
             aria-current={note.id === selectedId ? "true" : undefined}
           >
             <span style={{
-              fontWeight: note.id === selectedId ? 600 : 500,
+              fontWeight: note.id === selectedId ? 700 : 500,
               fontSize: "1rem"
             }}>{note.title || <em>(No Title)</em>}</span>
             <br />
             <span style={{
-              color: "#888",
+              color: "#666",
               fontSize: "0.88rem"
             }}>{note.updated_at ? (new Date(note.updated_at)).toLocaleString() : ""}</span>
           </button>

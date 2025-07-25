@@ -42,7 +42,7 @@ function NoteEditor({
   if (!note && !isEditing && !isNew) {
     return (
       <div style={{
-        padding: 48, color: "#757575",
+        padding: 48, color: "#666",
         fontSize: "1.1rem"
       }}>
         Select a note from the sidebar
@@ -54,20 +54,22 @@ function NoteEditor({
   if (!isEditing && !isNew) {
     return (
       <div style={{ padding: "32px 40px", maxWidth: 720, margin: "0 auto" }}>
-        <h2 style={{ color: "#1976d2", marginBottom: 0 }}>{note?.title || <em>(No Title)</em>}</h2>
-        <div style={{ color: "#888", fontSize: "0.94rem" }}>
+        <h2 style={{ color: "#000", marginBottom: 0 }}>
+          {note?.title || <em style={{ color: "#666" }}>(No Title)</em>}
+        </h2>
+        <div style={{ color: "#666", fontSize: "0.94rem" }}>
           Last updated: {note?.updated_at ? (new Date(note.updated_at)).toLocaleString() : "N/A"}
         </div>
-        <hr style={{ borderColor: "#eee", margin: "20px 0" }} />
+        <hr style={{ borderColor: "#ccc", margin: "20px 0" }} />
         <div style={{ whiteSpace: "pre-wrap", fontSize: "1.11rem", minHeight: 120 }}>
-          {note?.content || <span style={{ color: "#aaa" }}>(No content)</span>}
+          {note?.content || <span style={{ color: "#ccc" }}>(No content)</span>}
         </div>
         <div style={{ marginTop: 32 }}>
           <button
-            style={buttonStyle("#1976d2")}
+            style={buttonStyle("view")}
             onClick={onEdit}
           >Edit</button>
-          <button style={buttonStyle("#ff1744")}
+          <button style={buttonStyle("danger")}
                   onClick={() => window.confirm("Delete this note?") && onDelete(note)}
           >Delete</button>
         </div>
@@ -114,19 +116,19 @@ function NoteEditor({
       />
       <div style={{ marginTop: 28 }}>
         <button
-          style={buttonStyle("#1976d2")}
+          style={buttonStyle("save")}
           type="submit"
           disabled={loading}
         >Save</button>
         <button
-          style={buttonStyle("#424242")}
+          style={buttonStyle("cancel")}
           type="button"
           onClick={onCancel}
           disabled={loading}
         >Cancel</button>
         {!isNew && (
           <button
-            style={buttonStyle("#ff1744")}
+            style={buttonStyle("danger")}
             type="button"
             onClick={() => window.confirm("Delete this note?") && onDelete(localNote)}
             disabled={loading}
@@ -137,11 +139,30 @@ function NoteEditor({
   );
 }
 
-function buttonStyle(bg) {
+// Choose palette for button type
+function buttonStyle(type) {
+  let bg, color, border;
+  if (type === "save" || type === "view") {
+    bg = "#000";
+    color = "#fff";
+    border = "1px solid #000";
+  } else if (type === "danger") {
+    bg = "#fff";
+    color = "#000";
+    border = "1px solid #000";
+  } else if (type === "cancel") {
+    bg = "#ccc";
+    color = "#000";
+    border = "1px solid #ccc";
+  } else {
+    bg = "#000";
+    color = "#fff";
+    border = "1px solid #000";
+  }
   return {
     background: bg,
-    color: "#fff",
-    border: "none",
+    color,
+    border,
     borderRadius: 5,
     padding: "9px 22px",
     marginRight: 14,
@@ -149,23 +170,25 @@ function buttonStyle(bg) {
     cursor: "pointer",
     fontSize: "1.02rem",
     marginBottom: 10,
-    transition: "opacity 0.2s"
+    transition: "background 0.15s, color 0.15s, border 0.2s"
   };
 }
 const labelStyle = {
   fontWeight: 500,
   fontSize: "1rem",
   margin: "22px 0 8px 0",
-  display: "block"
+  display: "block",
+  color: "#000"
 };
 const inputStyle = {
   width: "100%",
   padding: "10px",
   fontSize: "1.07rem",
-  border: "1px solid #e9ecef",
+  border: "1px solid #ccc",
   borderRadius: 5,
   marginBottom: 6,
-  background: "#fff"
+  background: "#fff",
+  color: "#000"
 };
 
 export default NoteEditor;
