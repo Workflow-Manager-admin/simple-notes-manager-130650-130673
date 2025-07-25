@@ -50,6 +50,11 @@ for each row
 execute procedure update_updated_at_column();
 ```
 
+**Verified:**  
+As of latest deployment, the `notes` table and triggers have been confirmed to match the above definition.  
+Extra/backward-incompatible columns have been ignored by the frontend.  
+You can safely perform all CRUD from the React client.
+
 ## Usage
 
 The frontend imports Supabase using `@supabase/supabase-js` and connects via these env vars.
